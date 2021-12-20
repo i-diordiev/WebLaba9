@@ -1,0 +1,56 @@
+@model WebLaba9.Models.AllEmailsViewModel
+
+<h2>My emails</h2>
+<a onclick="showPopup('@Url.Action("SendEmail", "Home", null, Context.Request.Scheme)','Send Email')" class="btn btn-primary">Send Email</a>
+<table class="table">
+    <thead>
+    <tr>
+        <th>Sent from</th>
+        <th>Title</th>
+        <th>Message</th>
+        <th>Date</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var email in Model.EmailsReceived)
+    {
+        <tr>
+            <td>@email.SenderEmail</td>
+            <td>@email.Title</td>
+            <td>@email.Message</td>
+            <td>@email.Date</td>
+            <td>
+                <a onclick="showPopup('@Url.Action("Details", "Home", new {email.Id}, Context.Request.Scheme)', 'Email Details')" class="btn btn-primary">Details</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+    
+<h2>Sent emails</h2>
+<table class="table">
+    <thead>
+    <tr>
+        <th>Sent to</th>
+        <th>Title</th>
+        <th>Message</th>
+        <th>Date</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var email in Model.EmailsSent)
+    {
+        <tr>
+            <td>@email.RecipientEmail</td>
+            <td>@email.Title</td>
+            <td>@email.Message</td>
+            <td>@email.Date</td>
+            <td>
+                <a onclick="showPopup('@Url.Action("Details", "Home", new {email.Id}, Context.Request.Scheme)', 'Email Details')" class="btn btn-primary">Details</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

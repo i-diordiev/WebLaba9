@@ -1,0 +1,33 @@
+@model WebLaba9.Models.LoginViewModel
+
+@{
+    ViewBag.Title = "Login";
+	Layout = null;
+}
+
+<form method="post" asp-controller="Home" asp-action="Login" asp-route-returnUrl="@Model.ReturnUrl">
+	<div>    
+		<h2>Login</h2>
+		<div asp-validation-summary="ModelOnly"></div>
+		<div class="form-group">
+			<label asp-for="Username"></label><br>
+			<input asp-for="Username">
+			<span asp-validation-for="Username"></span>
+		</div>
+		<div class="form-group">
+			<label asp-for="Password"></label><br>
+			<input asp-for="Password">
+			<span asp-validation-for="Password"></span>
+		</div>
+		<div class="form-group">
+			<input asp-for="RememberMe">
+			<label asp-for="RememberMe"></label>
+		</div>
+		<div>
+			<input type="submit" value="Login" class="btn btn-success">
+		</div>
+	</div>
+</form>
+
+<script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>

@@ -1,0 +1,29 @@
+@model WebLaba9.Models.SendEmailViewModel
+
+@{
+    ViewBag.Title = "Send Email";
+    Layout = null;
+}
+
+<h2>Send Email</h2>
+<form asp-action="SendEmail" asp-controller="Home" method="post" onsubmit="return ajaxPost(this);">
+    <div class="form-group">
+        <label asp-for="SendTo"></label><br>
+        <input asp-for="SendTo">
+        <span asp-validation-for="SendTo"></span>
+    </div>
+    
+    <div class="form-group">
+        <label asp-for="Title"></label><br>
+        <input asp-for="Title">
+        <span asp-validation-for="Title"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Message"></label><br>
+        <input asp-for="Message" >
+        <span asp-validation-for="Message"></span>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Send" class="btn btn-primary">
+    </div>
+</form>

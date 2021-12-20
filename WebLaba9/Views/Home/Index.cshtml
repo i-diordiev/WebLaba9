@@ -1,0 +1,19 @@
+﻿@model WebLaba9.Models.AllEmailsViewModel
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@if (!User.Identity.IsAuthenticated)
+{
+    <h2>Please, log in or register</h2>
+    <a class="btn btn-primary" onclick="showPopup('@Url.Action("Register", "Home", null, Context.Request.Scheme)','Register')">Register</a>
+    <a class="btn btn-primary" onclick="showPopup('@Url.Action("Login", "Home", null, Context.Request.Scheme)','Login')">Login</a>
+}
+else
+{
+    <div id="email-tables">
+        @await Html.PartialAsync("_EmailTables", Model)
+    </div>
+}
+
